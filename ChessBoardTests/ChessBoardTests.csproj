@@ -49,7 +49,7 @@
     <Compile Include="ChessBoardTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ChessBoard\ChessBoard.csproj">
+    <ProjectReference Include="..\ChessBoard.csproj">
       <Project>{6CB8E8F5-4908-484C-8810-6BC87A5A1AA1}</Project>
       <Name>ChessBoard</Name>
     </ProjectReference>

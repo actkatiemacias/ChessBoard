@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace ChessBoard
 {
@@ -9,6 +6,12 @@ namespace ChessBoard
     {
         static void Main(string[] args)
         {
-        }
+            /**To Do:
+             * Read file input
+             * Create ChessBoard and all Tile Objects
+             * Calc ChessBoard capacity
+             * Print result to console
+             **/
+        } 
     }
 }
