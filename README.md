@@ -19,7 +19,7 @@ For Example:
   
   Output:
   
-  Chessboard holds: 1 units^2 of water
+  Chessboard holds: 1 units^3 of water
   
   Input:
   
@@ -29,4 +29,4 @@ For Example:
   
   Output:
   
-  Chessboard holds: 0 unit^2 of water
+  Chessboard holds: 0 units^3 of water
