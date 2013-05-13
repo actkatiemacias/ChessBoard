@@ -8,6 +8,7 @@ Outputs the total volume of standing water the board can hold.
 For Example:
 
   Input:
+  
   3,3
   
   3,3,3
@@ -17,12 +18,15 @@ For Example:
   3,3,3
   
   Output:
+  
   Chessboard holds: 1 units^2 of water
   
   Input:
+  
   1,1
   
   5
   
   Output:
+  
   Chessboard holds: 0 unit^2 of water
