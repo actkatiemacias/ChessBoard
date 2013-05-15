@@ -51,6 +51,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tile.cs" />
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="SampleInput\3x3.txt" />
+    <Content Include="SampleInput\BackTwoPassesChessboard.txt" />
+    <Content Include="SampleInput\Flat3x3.txt" />
+    <Content Include="SampleInput\Shallow3x3.txt" />
+    <Content Include="SampleInput\SmileyFace.txt" />
+    <Content Include="SampleInput\TwobyThree.txt" />
+    <Content Include="SampleInput\TwoPassesChessboard.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

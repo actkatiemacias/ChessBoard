@@ -62,7 +62,7 @@ namespace ChessBoard
                 BaseHeight = tile.Height;
             }
             Tiles.Add(tile);
-            TileCount = Tiles.Count;
+            TileCount = int.Parse(Tiles.Count.ToString());
 
         }
 

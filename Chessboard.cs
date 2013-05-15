@@ -19,13 +19,7 @@ namespace ChessBoard
         //The width of the chessboard
         //Corresponds to the y dimension on a tile
         public int Width { get; private set; }
-        
-        //Indicator to determine if water is spilling from chessboard
-        //If water spills it is a sign algorithm should stop searching
-        public bool Spill { get; private set; }
 
-        //Indicator to determine if all (non edge) tiles have been visited
-        public bool AllVisited { get; private set; }
         
         /**Chessboard constructor
          * Assumption: Initially the chessboard does not spill water 
@@ -37,15 +31,13 @@ namespace ChessBoard
             Width = w;
             Capacity = 0;
             Board = new Tile[Height, Width];
-            Spill = false;
-            AllVisited = false;
         }
 
         /**
          * Updates the tiles in the polygon with their new hieght after being filled
          * Marks all tiles in polygon that were visited.
          **/
-        public void UpdateBoard(Polygon polygon)
+        public void UpdateBoard(Polygon polygon, Tile currentTile)
         {
             foreach (Tile tile in polygon.Tiles)
             {
@@ -54,9 +46,8 @@ namespace ChessBoard
                 {
                     Board[tile.XLoc, tile.YLoc].Fill(polygon.MinAdjacentHeight);
                 }
-                //Mark all tiles as visited
-                Board[tile.XLoc, tile.YLoc].Visit();
             }
+            currentTile.Visit();
         }
 
         /**
@@ -70,11 +61,9 @@ namespace ChessBoard
             //A board must have at least dimensions of 3x3 to hold water
             if (Height > 2 && Width > 2)
             {
-                //Check if another pass is needed
-                while (Spill == false || AllVisited == false)
-                {
+                
                     //Each pass starts with all Tiles unvisited
-                    ClearBoard();
+
                     //Iterate through each tile in the board
                     for (int i = 1; i < Height - 1; i++)
                     {
@@ -87,15 +76,11 @@ namespace ChessBoard
                                 basePolygon.AddTile(Board[i, j]);
                                 Polygon resultPolygon = FindPolygon(basePolygon, Board[i, j]);
                                 Capacity += resultPolygon.GetCapacity();
-                                //Todo: A better spill indicator needed
-                                Spill = resultPolygon.Spill;
-                                UpdateBoard(resultPolygon);
+                                UpdateBoard(resultPolygon, Board[i,j]);
                             }
                         }
-                    }
-                    AllVisited = true;
+                    } 
                 }
-            }
             else
             {
                 Capacity = 0;
@@ -103,18 +88,6 @@ namespace ChessBoard
             return Capacity;
         }
 
-        /** Unvisits all tiles**/
-        public void ClearBoard()
-        {
-            for (int i = 1; i < Height - 1; i++)
-            {
-                for (int j = 1; j < Width - 1; j++)
-                {
-                    Board[i, j].Visited = false;
-                }
-            }
-            AllVisited = false;
-        }
 
         /**Finds all tiles that are adjacent to one another with the same height
          * Uses a recursive depth first search to find the largest polygon possible each pass
